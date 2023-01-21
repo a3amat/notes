@@ -1,3 +1,11 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import *
+
+
+def article(request):
+    obj = "Hello world, article"
+    context = {
+        'obj': obj
+    }
+    return render(request, 'article/home.html', context)
