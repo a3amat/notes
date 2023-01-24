@@ -20,7 +20,8 @@ mv notes/* ./
 rm -rf notes
 ./manage.py runserver
 ```
-Дале нужно будет подключить наши приложения к проекту для этого нам понадобятся файлы urls.py и settings.py
+Дале нужно будет подключить наши приложения к проекту для этого нам понадобятся файлы в директории note/urls.py и note/settings.py
+
 В файле urls.py в urlpatterns необходимо добавить строчки:
 ```
 path('', include('home.urls'), name='home'),
