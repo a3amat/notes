@@ -1,26 +1,40 @@
-# notes
+# Мой проект
 
-Приложение для ведения заметок и напоминаний.
+Данный проект развивается для изучения Django и так же для создания прототипов приложений для Django, которые можно будет использовать в будущих проектах.
+Приложения:
+- Home - главная страница
+- Article - приложение для создания статьи и сообщений
+- Gallery - картинная галерея
+- TelegramBot - интеграция с телеграм каналом
+- и много еще чего...
 
+### Автоматическая установка
 Первоначальную настроку можно провести с помощью баш скрипта:
 ```
-bash start.sh
+bash start.sh <name>
 ```
+name - необходимо задать имя проекту
 
+По завершение работы скрипта, вы получаете рабочую Django, в котором настройки будут храниться в директории config.
+
+### Ручная установка
 Либо тоже самое можно сделать ручками, перейдите нужную директорию и выполните следующие команды:
 ```
 python3 -m venv env
 source env/bin/activate
 pip install -U pip
 pip install django
-django-admin startproject note
-cd note
-git clone https://github.com/a3amat/notes.git 
-mv notes/* ./
+django-admin startproject <name>
+cd <name>
+git clone https://github.com/a3amat/notes.git
+cp -r notes/. ./
 rm -rf notes
+
 ./manage.py runserver
 ```
-Дале нужно будет подключить наши приложения к проекту для этого нам понадобятся файлы в директории note/urls.py и note/settings.py
+
+### После установовчная настройка
+Дале нужно будет подключить наши приложения к проекту для этого нам понадобятся файлы в директории config/urls.py и config/settings.py
 
 В файле urls.py в urlpatterns необходимо добавить строчки:
 ```
@@ -31,9 +45,20 @@ path('article/', include('article.urls'), name='article'),
 ```
 from django.urls import path, include
 ```
+Файл должен выгледить следующим образом:
+```
+"""
+from django.contrib import admin
+from django.urls import path, include
 
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('home.urls'), name='home'),
+    path('article/', include('article.urls'), name='article'),
+]
+```
 Далее манипуляции в файле settings.py
-В разделе INSTALLED_APPS добавляем наши приложения
+В разделе INSTALLED_APPS добавляем наши приложения home, article как указано ниже
 ```
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -46,7 +71,7 @@ INSTALLED_APPS = [
     'home',
     'article',
 ```
-В разделе TEMPLATES приводим к следующиму виду, пункте DIRS укажим путь к нашим шаблонам:
+В разделе TEMPLATES приводим к следующиму виду, пункте DIRS укажим путь к нашим шаблонам BASE_DIR / 'templates'. Общий вид:
 ```
 TEMPLATES = [
     {
@@ -64,7 +89,17 @@ TEMPLATES = [
     },
 ]
 ```
-Следующим шагом можем запустить Django сервер и проверить, как работает наш проект
+### Запуск проекта
+Следующим шагом можем запустить Django сервер и проверить, как работает наш проект, но перед этим нужно будет выполнить следующие команды:
 ```
+#провести миграцию
+./manage.py makemigrations
+./manage.py migrate
+#создадим суперпользователя
+./manage.py createsuperuser
+./manage.py migrate
+#запускаем проект
 ./manage.py runserver
 ```
+По всем вопросам пишите:
+<br>e-mail: a3amat9@yandex.ru

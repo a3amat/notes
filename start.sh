@@ -5,7 +5,6 @@ source env/bin/activate
 pip install -U pip
 pip install django
 django-admin startproject $1
-
 name=$1
 
 cd ${name}
@@ -22,7 +21,6 @@ sed -i "s/${name}/config/g" manage.py
 
 
 echo 'Можете проверить запущенный Django'
-
 ./manage.py runserver
 
 echo 'Exit'
