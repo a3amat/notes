@@ -9,10 +9,12 @@ class Article(models.Model):
         
     name = models.CharField(verbose_name="Название статьи", max_length=255)
     description = models.TextField(verbose_name="Текст", blank = True)
-    create_date = models.DateField(verbose_name="Дата создания", auto_now=True)
+    create_date = models.DateTimeField(verbose_name="Время создания", auto_now_add=True, editable=False)
+    update_date = models.DateTimeField(verbose_name="Время последнего изменения", auto_now=True)
+
 
 
     def __str__(self):
-        return self.name
+        return '{} '' : '' {}'.format(self.id, self.name)
     
     
