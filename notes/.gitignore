@@ -1,7 +1,5 @@
 manage.py
 config
-migrations/
-
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -8,10 +8,9 @@ class Article(models.Model):
         ordering = ["-id"]
         
     name = models.CharField(verbose_name="Название статьи", max_length=255)
-    description = models.TextField(verbose_name="Текст")
+    description = models.TextField(verbose_name="Текст", blank = True)
     create_date = models.DateField(verbose_name="Дата создания", auto_now=True)
 
 
     def __str__(self):
         return self.name
-    
