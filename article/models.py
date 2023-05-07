@@ -12,8 +12,6 @@ class Article(models.Model):
     create_date = models.DateTimeField(verbose_name="Время создания", auto_now_add=True, editable=False)
     update_date = models.DateTimeField(verbose_name="Время последнего изменения", auto_now=True)
 
-
-
     def __str__(self):
         return '{} '' : '' {}'.format(self.id, self.name)
     
