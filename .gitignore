@@ -1,6 +1,6 @@
 manage.py
 config
-migrations
+migrations/
 
 
 # Byte-compiled / optimized / DLL files
