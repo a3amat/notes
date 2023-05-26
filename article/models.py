@@ -11,10 +11,10 @@ class Article(models.Model):
         verbose_name_plural = u"статьи"
         
     name = models.CharField(verbose_name="Название статьи", max_length=255)
-    description = models.TextField(verbose_name="Текст", blank = True)
+    description = models.TextField(verbose_name="Текст")
     create_date = models.DateTimeField(verbose_name="Время создания", auto_now_add=True, editable=False)
     update_date = models.DateTimeField(verbose_name="Время последнего изменения", auto_now=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, verbose_name="Автор")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Автор")
 
     def __str__(self):
         return '{} '' : '' {}'.format(self.id, self.name)
