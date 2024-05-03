@@ -92,5 +92,3 @@ TEMPLATES = [
 #запускаем проект
 ./manage.py runserver
 ```
-По всем вопросам пишите:
-<br>e-mail: a3amat9@yandex.ru
